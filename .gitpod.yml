@@ -1,1 +1,13 @@
 image: nfcore/gitpod:latest
+
+tasks:
+  - name: Run AMeta test
+    command: |
+      conda env create -f workflow/envs/environment.yaml
+      conda init
+      . /home/gitpod/.bashrc
+      conda activate aMeta
+      cd .test
+      ./runtest.sh -j 4 --resources mem_mb=10000
+
+
